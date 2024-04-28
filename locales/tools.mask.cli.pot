@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-28 23:51+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: tools/mask/cli.py:15
+msgid ""
+"This tool allows you to generate, import, export or preview masks for "
+"existing alignments."
+msgstr ""
+
+#: tools/mask/cli.py:25
+msgid ""
+"Mask tool\n"
+"Generate, import, export or preview masks for existing alignments files."
+msgstr ""
+
+#: tools/mask/cli.py:35 tools/mask/cli.py:47 tools/mask/cli.py:58
+#: tools/mask/cli.py:69
+msgid "data"
+msgstr ""
+
+#: tools/mask/cli.py:39
+msgid ""
+"Full path to the alignments file that contains the masks if not at the "
+"default location. NB: If the input-type is faces and you wish to update the "
+"corresponding alignments file, then you must provide a value here as the "
+"location cannot be automatically detected."
+msgstr ""
+
+#: tools/mask/cli.py:51
+msgid "Directory containing extracted faces, source frames, or a video file."
+msgstr ""
+
+#: tools/mask/cli.py:61
+msgid ""
+"R|Whether the `input` is a folder of faces or a folder frames/video\n"
+"L|faces: The input is a folder containing extracted faces.\n"
+"L|frames: The input is a folder containing frames or is a video"
+msgstr ""
+
+#: tools/mask/cli.py:71
+msgid ""
+"R|Run the mask tool on multiple sources. If selected then the other options "
+"should be set as follows:\n"
+"L|input: A parent folder containing either all of the video files to be "
+"processed, or containing sub-folders of frames/faces.\n"
+"L|output-folder: If provided, then sub-folders will be created within the "
+"given location to hold the previews for each input.\n"
+"L|alignments: Alignments field will be ignored for batch processing. The "
+"alignments files must exist at the default location (for frames). For batch "
+"processing of masks with 'faces' as the input type, then only the PNG header "
+"within the extracted faces will be updated."
+msgstr ""
+
+#: tools/mask/cli.py:87 tools/mask/cli.py:119
+msgid "process"
+msgstr ""
+
+#: tools/mask/cli.py:89
+msgid ""
+"R|Masker to use.\n"
+"L|bisenet-fp: Relatively lightweight NN based mask that provides more "
+"refined control over the area to be masked including full head masking "
+"(configurable in mask settings).\n"
+"L|components: Mask designed to provide facial segmentation based on the "
+"positioning of landmark locations. A convex hull is constructed around the "
+"exterior of the landmarks to create a mask.\n"
+"L|custom: A dummy mask that fills the mask area with all 1s or 0s "
+"(configurable in settings). This is only required if you intend to manually "
+"edit the custom masks yourself in the manual tool. This mask does not use "
+"the GPU.\n"
+"L|extended: Mask designed to provide facial segmentation based on the "
+"positioning of landmark locations. A convex hull is constructed around the "
+"exterior of the landmarks and the mask is extended upwards onto the "
+"forehead.\n"
+"L|vgg-clear: Mask designed to provide smart segmentation of mostly frontal "
+"faces clear of obstructions. Profile faces and obstructions may result in "
+"sub-par performance.\n"
+"L|vgg-obstructed: Mask designed to provide smart segmentation of mostly "
+"frontal faces. The mask model has been specifically trained to recognize "
+"some facial obstructions (hands and eyeglasses). Profile faces may result in "
+"sub-par performance.\n"
+"L|unet-dfl: Mask designed to provide smart segmentation of mostly frontal "
+"faces. The mask model has been trained by community members. Profile faces "
+"may result in sub-par performance."
+msgstr ""
+
+#: tools/mask/cli.py:121
+msgid ""
+"R|The Mask tool process to perform.\n"
+"L|all: Update the mask for all faces in the alignments file for the selected "
+"'masker'.\n"
+"L|missing: Create a mask for all faces in the alignments file where a mask "
+"does not previously exist for the selected 'masker'.\n"
+"L|output: Don't update the masks, just output the selected 'masker' for "
+"review/editing in external tools to the given output folder.\n"
+"L|import: Import masks that have been edited outside of faceswap into the "
+"alignments file. Note: 'custom' must be the selected 'masker' and the masks "
+"must be in the same format as the 'input-type' (frames or faces)"
+msgstr ""
+
+#: tools/mask/cli.py:135 tools/mask/cli.py:154 tools/mask/cli.py:174
+msgid "import"
+msgstr ""
+
+#: tools/mask/cli.py:137
+msgid ""
+"R|Import only. The path to the folder that contains masks to be imported.\n"
+"L|How the masks are provided is not important, but they will be stored, "
+"internally, as 8-bit grayscale images.\n"
+"L|If the input are images, then the masks must be named exactly the same as "
+"input frames/faces (excluding the file extension).\n"
+"L|If the input is a video file, then the filename of the masks is not "
+"important but should contain the frame number at the end of the filename "
+"(but before the file extension). The frame number can be separated from the "
+"rest of the filename by any non-numeric character and can be padded by any "
+"number of zeros. The frame number must correspond correctly to the frame "
+"number in the original video (starting from frame 1)."
+msgstr ""
+
+#: tools/mask/cli.py:156
+msgid ""
+"R|Import only. The centering to use when importing masks. Note: For any job "
+"other than 'import' this option is ignored as mask centering is handled "
+"internally.\n"
+"L|face: Centers the mask on the center of the face, adjusting for pitch and "
+"yaw. Outside of requirements for full head masking/training, this is likely "
+"to be the best choice.\n"
+"L|head: Centers the mask on the center of the head, adjusting for pitch and "
+"yaw. Note: You should only select head centering if you intend to include "
+"the full head (including hair) within the mask and are looking to train a "
+"full head model.\n"
+"L|legacy: The 'original' extraction technique. Centers the mask near the  of "
+"the nose with and crops closely to the face. Can result in the edges of the "
+"mask appearing outside of the training area."
+msgstr ""
+
+#: tools/mask/cli.py:179
+msgid ""
+"Import only. The size, in pixels to internally store the mask at.\n"
+"The default is 128 which is fine for nearly all usecases. Larger sizes will "
+"result in larger alignments files and longer processing."
+msgstr ""
+
+#: tools/mask/cli.py:187 tools/mask/cli.py:195 tools/mask/cli.py:209
+#: tools/mask/cli.py:223 tools/mask/cli.py:233
+msgid "output"
+msgstr ""
+
+#: tools/mask/cli.py:189
+msgid ""
+"Optional output location. If provided, a preview of the masks created will "
+"be output in the given folder."
+msgstr ""
+
+#: tools/mask/cli.py:200
+msgid ""
+"Apply gaussian blur to the mask output. Has the effect of smoothing the "
+"edges of the mask giving less of a hard edge. the size is in pixels. This "
+"value should be odd, if an even number is passed in then it will be rounded "
+"to the next odd number. NB: Only effects the output preview. Set to 0 for off"
+msgstr ""
+
+#: tools/mask/cli.py:214
+msgid ""
+"Helps reduce 'blotchiness' on some masks by making light shades white and "
+"dark shades black. Higher values will impact more of the mask. NB: Only "
+"effects the output preview. Set to 0 for off"
+msgstr ""
+
+#: tools/mask/cli.py:225
+msgid ""
+"R|How to format the output when processing is set to 'output'.\n"
+"L|combined: The image contains the face/frame, face mask and masked face.\n"
+"L|masked: Output the face/frame as rgba image with the face masked.\n"
+"L|mask: Only output the mask as a single channel image."
+msgstr ""
+
+#: tools/mask/cli.py:235
+msgid ""
+"R|Whether to output the whole frame or only the face box when using output "
+"processing. Only has an effect when using frames as input."
+msgstr ""
